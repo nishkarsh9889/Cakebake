@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Login</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Montserrat', sans-serif;
+        color: #49130c;
+    }
+
+    .navbar {
+        min-height: 80px;
+        background-color: #fbdcad;
+        border-radius: 0px;
+    }
+
+    .navbar-brand {
+        padding: 0px;
+        height: 80px;
+        background-color: #fbdcad;
+        margin-right: 30px;
+    }
+
+    .navbar-toggle {
+        margin-top: 23px;
+        padding: 9px 10px !important;
+    }
+
+    .navbar-default .navbar-nav>li>a {
+        color: #49130c;
+    }
+
+    @media (min-width: 768px) {
+        .navbar-nav>li>a {
+            padding-top: 26.5px;
+            padding-bottom: 26.5px;
+            line-height: 27px;
+        }
+    }
+
+    .navbar-default .navbar-nav>.active>a,
+    .navbar-default .navbar-nav>.open>a {
+        background-color: #e6637f;
+    }
+
+    .navbar-default .navbar-nav>.active>a:hover,
+    .navbar-default .navbar-nav>li>a:hover,
+    .navbar-default .navbar-nav>li>a:focus {
+        background-color: #F2D4A7
+    }
+
+
+    .navbar-brand>img {
+        height: 80px;
+    }
+</style>
+
+<body>
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    <img width="80" th:src="@{/images/logo.png}" src="/src/main/resources/static/images/logo.png"></img>
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li style="font-size: medium"><a th:href="@{/}" href="#">Home</a></li>
+                    <li style="font-size: medium"><a th:href="@{/shop}" href="#">Shop</a></li>
+                    <li style="font-size: medium"><a th:href="@{/register}" href="#">Sign Up</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h2>Login</h2>
+                <p>Please fill out this to login</p>
+                <form th:action="@{/login}" method="post">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" placeholder="Your Email"
+                            class="form-control form-control-lg">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control form-control-lg" placeholder="Password"
+                            name="password" id="password">
+                    </div>
+                    <div th:if="${param.error}" class="alert alert-error text-danger">
+                        Invalid username or password.
+                    </div>
+
+                    <input type="submit" value="Login" class="btn btn-primary btn-block">
+                    <br>
+                    <span>Don't have an account <a class="linkControl" href="./register.html"
+                            th:href="@{/register}">Register here</a></span>
+                    <br>
+                </form>
+                <br>
+                <h3>OR</h3>
+                <a href="/oauth2/authorization/google" class="btn btn-primary">Sign-In with google </a>
+            </div>
+        </div>
+    </div>
+
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/FitText.js/1.1/jquery.fittext.min.js'></script>
+</body>
+
+</html>
